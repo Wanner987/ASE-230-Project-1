@@ -19,12 +19,23 @@ Total Points: 200
 
 - [ /40] Implemented at least 8 REST APIs in PHP/MySQL (5 points per 1 REST API).
   - List their names:
+  - - List APIs chosen:  
+    - Get /artist/id
+    - Get /playlist/id
+    - Get /user/id
+    - Get /song/id  
+    - Post /user
+    - Get /search
 - [ /20] Implemented at least 2 Bearer Token authentication REST APIs in PHP/MySQL (10 points per 1 Bearer Token REST API)
-  - List their names:
+  - List their names:  
+    - Post /auth/login
+    - Post /playlist 
+    - Post /song
+    - Put /playlist
 - [ /20] Made cURL test code (should test all APIs, 2 points per 1 API).
   - List the file name:
 - [ /20] Made HTML/JavaScript test code (should test all APIs, 2 points per 1 API).
-  - List the file name:
+  - List the file name: index.php and myJS.js
 
 ---
 

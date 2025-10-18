@@ -32,3 +32,14 @@ async function getUserByID() {
         document.getElementById('user-id-result').textContent = 'Error: ' + error.message;
     }
 }
+
+async function getPlaylistByID() {
+    const id = document.getElementById('playlist-id').value;
+    try {
+        const response = await fetch(`${API_BASE}/playlist/${id}`);
+        const data = await response.json();
+        document.getElementById('playlist-id-result').textContent = JSON.stringify(data, null, 2);
+    } catch (error) {
+        document.getElementById('playlist-id-result').textContent = 'Error: ' + error.message;
+    }
+}

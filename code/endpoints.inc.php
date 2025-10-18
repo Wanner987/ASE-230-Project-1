@@ -105,10 +105,10 @@ if ($resource === 'playlist') {
     switch($method) {
         case 'GET':
             if ($playlist_id) {
-                $songName = getPlaylistByID($playlist_id)[0];
+                $playlistArray = getPlaylistByID($playlist_id)[0];
                 echo json_encode([
                     'success' => true,
-                    'name' => $songName
+                    'name' => $playlistArray
                 ]);
                 exit;
             } else {

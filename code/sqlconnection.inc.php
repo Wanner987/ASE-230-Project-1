@@ -82,8 +82,27 @@ function getArtistByID(int $id): array {
 }
 
 function getPlaylistByID(int $id): array {
-  $row = getByID($id, 'playlist');
-  return $row;
+  global $pdo;
+  try {
+    $sql = "SELECT * FROM playlist_songs WHERE playlist_id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+      ':id' => $id,
+    ]);
+
+    #check if successful
+    $rows = $stmt->fetchAll();
+
+    if ($rows) {
+      return $rows;
+    } 
+    else {
+      return ['error no row found'];
+    }
+  } catch (PDOException $e) {
+    error_log("DB Error: " . $e->getMessage());
+    return ['error PDO exeption'];
+  }
 }
 
 function getUserByID(int $id): array {
