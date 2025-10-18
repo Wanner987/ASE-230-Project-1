@@ -110,6 +110,20 @@
         <button onclick="createNewSong()">POST /song/</button>
         <pre id="newSong-result"></pre>
     </div>
+
+    <div class="test-section">
+        <h3>9. Create new playlist</h3>
+        
+        <button onclick="createNewSong()">POST /song/</button>
+        <pre id="newSong-result"></pre>
+    </div>
+
+    <div class="test-section">
+        <h3>10. add song to playlist</h3>
+        <
+        <button onclick="createNewSong()">POST /song/</button>
+        <pre id="newSong-result"></pre>
+    </div>
     
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -94,9 +94,9 @@ if ($resource === 'song') {
             }
 
             $songName = $data['songName'];
-            $songArtist = $data['songName'];
-            $songLength = $data['songName'];
-            $auth = $data['songName'];
+            $songArtist = $data['songArtist'];
+            $songLength = $data['songLength'];
+            $auth = $data['songAuth'];
 
             if(!isValidToken($auth)) {
                 http_response_code(400);
@@ -104,7 +104,7 @@ if ($resource === 'song') {
                 exit;
             }
 
-            $newSongID = createNewSong($songName);
+            $newSongID = createNewSong($songName, $songArtist, $songLength);
 
             echo json_encode([
             'success' => true,
@@ -217,7 +217,7 @@ if ($resource === 'search') {
     switch($method) {
         case 'GET':
             if ($search_id) {
-                $matches = getByName($search_id);
+                $matches = getSongByName($search_id);
                 echo json_encode([
                     'success' => true,
                     'name' => $matches

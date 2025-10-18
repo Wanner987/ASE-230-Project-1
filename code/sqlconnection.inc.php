@@ -135,10 +135,34 @@ function createNewUser(string $name, string $password): int {
   }
 }
 
-function getByName(string $searchName): array {
+function getSongByName(string $searchName): array {
   global $pdo;
   try {
     $sql = "SELECT * FROM songs WHERE name = :search";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+      ':search' => $searchName
+    ]);
+
+    #check if successful
+    $rows = $stmt->fetchAll();
+
+    if ($rows) {
+      return $rows;
+    } 
+    else {
+      return ['error no row found'];
+    }
+  } catch (PDOException $e) {
+    error_log("DB Error: " . $e->getMessage());
+    return ['error PDO exception'];
+  }
+}
+
+function getArtistByName(string $searchName): array {
+  global $pdo;
+  try {
+    $sql = "SELECT * FROM artist WHERE name = :search";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
       ':search' => $searchName
@@ -189,7 +213,26 @@ function checkCredentials(string $username,string $password): bool {
 }
 
 function createNewSong(string $name, string $artistName, int $songLength): int {
-  return -1;
+  global $pdo;
+  $artistID = getArtistByName($artistName);
+
+  try {
+    $sql = "INSERT INTO songs (song_id, artist_ID, name, length_in_sec) VALUES (:songID, :artistID, :name, :songLength)";
+    $stmt = $pdo->prepare($sql);
+    $randomVal = random_int(0, 4294967295);
+    $stmt->execute([
+      ':songID' => $randomVal,
+      ':artistID' => $artistID,
+      ':name' => $name,
+      'songLength' => $songLength
+    ]);
+
+    return $randomVal;
+
+  } catch (PDOException $e) {
+    error_log("DB Error: " . $e->getMessage());
+    return -1;
+  }
 }
 
 /*
