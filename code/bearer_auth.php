@@ -34,5 +34,9 @@ function requireAuth() {
     return $user;
 }
 
+function isValidToken(string $auth): bool {
+    return $auth == 'ThisIsAToken(shouldBeMoreSecure)';
+}
+
 
 ?>

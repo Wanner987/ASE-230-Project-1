@@ -11,7 +11,6 @@ try {
   $dsn = "mysql:host={$servername};dbname={$dbname};charset=utf8mb4";
   $options =[];
   $pdo = new PDO($dsn, $username, $password, $options);
-  //echo "<br>Connected successfully<br><br>";
 } catch (PDOException $e) {
   exit("Connection failed: " . htmlspecialchars($e->getMessage()));
 }
@@ -132,7 +131,7 @@ function createNewUser(string $name, string $password): int {
 
   } catch (PDOException $e) {
     error_log("DB Error: " . $e->getMessage());
-    return null;
+    return -1;
   }
 }
 
@@ -161,11 +160,8 @@ function getByName(string $searchName): array {
 }
 
 function checkCredentials(string $username,string $password): bool {
-  return true;
-  if (!username || !password) {
-    return false;
-  }
-  
+  global $pdo;
+  //is user and pass set
 
   try {
     $sql = "SELECT * FROM users WHERE username = :username AND password = :pass";
@@ -176,10 +172,10 @@ function checkCredentials(string $username,string $password): bool {
     ]);
 
     #check if successful
-    $rows = $stmt->fetch();
+    $row = $stmt->fetch();
 
-    if ($rows) {
-      return $rows;
+    if ($row) {
+      return true;
     } 
     else {
       return false;
@@ -190,6 +186,10 @@ function checkCredentials(string $username,string $password): bool {
     //return ['error PDO exception'];
   }
 
+}
+
+function createNewSong(string $name, string $artistName, int $songLength): int {
+  return -1;
 }
 
 /*

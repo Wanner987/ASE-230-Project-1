@@ -95,10 +95,20 @@
     <div class="test-section">
         <h3>7. Login</h3>
         <input type="text" id="username-login" placeholder="username" value="name">
-        <input type="text" id="passwork-login" placeholder="password" value="pass">
+        <input type="text" id="password-login" placeholder="password" value="pass">
         <button onclick="loginUser()">POST /login/</button>
         <pre id="login-result"></pre>
         <pre id="token-value"></pre>
+    </div>
+
+    <div class="test-section">
+        <h3>8. Create new song</h3>
+        <input type="text" id="newSong-name" placeholder="name" value="">
+        <input type="text" id="newSong-artist" placeholder="bob" value="">
+        <input type="number" id="newSong-length" placeholder="100" value="">
+        <input type="text" id="newSong-auth" placeholder="the token you got from loging in" value="">
+        <button onclick="createNewSong()">POST /song/</button>
+        <pre id="newSong-result"></pre>
     </div>
     
 

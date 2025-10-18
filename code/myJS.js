@@ -80,7 +80,7 @@ async function createNewUser() {
 async function loginUser() {
     const userData = {
         username: document.getElementById('username-login').value,
-        
+        password: document.getElementById('password-login').value
     };
 
     try {
@@ -100,10 +100,36 @@ async function loginUser() {
             document.getElementById('login-result').textContent = JSON.stringify(data, null, 2);
             document.getElementById('token-value').textContent = currentToken;
         } else {
-            showError(responseDiv, data.error || 'Login failed');
+            document.getElementById('login-result').textContent = 'Error: ' + error.message;
         }
 
     } catch (error) {
         document.getElementById('login-result').textContent = 'Error: ' + error.message;
     }
 }
+
+async function createNewSong() {
+    const userData = {
+        songName: document.getElementById('newSong-name').value,
+        songArtist: document.getElementById('newSong-artist').value,
+        songLength: document.getElementById('newSong-length').value,
+        songAuth: document.getElementById('newSong-auth').value
+    };
+
+    try {
+        const response = await fetch(`${API_BASE}/song`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+            body: JSON.stringify(userData)
+        });
+
+        const data = await response.json();
+        document.getElementById('newSong-result').textContent = JSON.stringify(data, null, 2);
+    } catch (error) {
+        document.getElementById('newSong-result').textContent = 'Error: ' + error.message;
+    }
+}
+    
+    

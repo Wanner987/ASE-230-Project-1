@@ -26,7 +26,7 @@ Total Points: 200
     - Get /song/id  
     - Post /user
     - Get /search
-- [ /20] Implemented at least 2 Bearer Token authentication REST APIs in PHP/MySQL (10 points per 1 Bearer Token REST API)
+- [ 5/20] Implemented at least 2 Bearer Token authentication REST APIs in PHP/MySQL (10 points per 1 Bearer Token REST API)
   - List their names:  
     - Post /auth/login
     - Post /playlist 

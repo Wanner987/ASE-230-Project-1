@@ -1,22 +1,7 @@
 <?php
 require_once 'sqlconnection.inc.php';
-/*
- * Simple Song and Playlist REST API
- * 
- * Available endpoints:
-  - List APIs chosen:  
-    - Get /artist/id
-    - Get /playlist/id
-    - Get /user/id
-    - Get /song/id  
-    - Post /user
-    - Get /search
-  - Mark secure APIs:  
-    - Post /auth/login
-    - Post /playlist 
-    - Post /song
-    - Put /playlist
- */
+require_once 'bearer_auth.php'; 
+
 
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
@@ -40,10 +25,6 @@ $id = $segments[5] ?? null;
 $method = $_SERVER['REQUEST_METHOD']; //GET POST PUT DELETE
 
 if ($resource === 'artist') {
-    echo json_encode([
-                    'success' => true,
-                ]);
-                exit;
     $artist_id = isset($id) ? (int)$id : null;
 
     switch($method) {
@@ -91,6 +72,46 @@ if ($resource === 'song') {
             }
             break;
         case 'POST':
+            $json = file_get_contents('php://input');
+            $data = json_decode($json, true);
+
+            if (!isset($data['songName']) || empty($data['songName'])) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Name is required']);
+                exit;
+            }
+
+            if (!isset($data['songArtist']) || empty($data['songArtist'])) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Artist is required']);
+                exit;
+            }
+
+            if (!isset($data['songAuth']) || empty($data['songAuth'])) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Auth is required']);
+                exit;
+            }
+
+            $songName = $data['songName'];
+            $songArtist = $data['songName'];
+            $songLength = $data['songName'];
+            $auth = $data['songName'];
+
+            if(!isValidToken($auth)) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Auth is wrong']);
+                exit;
+            }
+
+            $newSongID = createNewSong($songName);
+
+            echo json_encode([
+            'success' => true,
+            'new ID' => $newSongID
+            ]);
+            exit;
+
             break;
         case 'PUT':
             break;
@@ -151,14 +172,17 @@ if ($resource === 'user') {
             }
             break;
         case 'POST':
+            
             $json = file_get_contents('php://input');
             $data = json_decode($json, true);
+            
 
             if (!isset($data['name']) || empty($data['name'])) {
             http_response_code(400);
             echo json_encode(['error' => 'Name is required']);
             exit;
             }
+            
 
 
             if (!isset($data['password']) || empty($data['password'])) {
@@ -166,7 +190,7 @@ if ($resource === 'user') {
             echo json_encode(['error' => 'Password is required']);
             exit;
             }
-
+            
             $newID = createNewUser($data['name'], $data['password']);
 
             echo json_encode([
@@ -229,15 +253,13 @@ if ($resource === 'login') {
         $password = $input['password'];
         
         if (!checkCredentials($username, $password)) {
-            sendJsonError(401, 'Invalid username or password');
+            echo json_encode([
+            'success' => false,
+            ]);
+            exit;
         }
-        echo json_encode([
-            'success' => true,
-            'message' => "$username $password"
-        ]);
-        exit;
-
-        $token = bin2hex(random_bytes(32));
+        
+        $token = 'ThisIsAToken(shouldBeMoreSecure)';
 
 
         echo json_encode([
