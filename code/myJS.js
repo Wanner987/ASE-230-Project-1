@@ -58,6 +58,7 @@ async function getByName() {
 async function createNewUser() {
     const newUserData = {
         name: document.getElementById('newUser-id').value,
+        password: document.getElementById('newUserPass-id').value
     };
 
     try {

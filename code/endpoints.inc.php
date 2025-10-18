@@ -150,13 +150,20 @@ if ($resource === 'user') {
             $json = file_get_contents('php://input');
             $data = json_decode($json, true);
 
-             if (!isset($data['name']) || empty($data['name'])) {
+            if (!isset($data['name']) || empty($data['name'])) {
             http_response_code(400);
             echo json_encode(['error' => 'Name is required']);
             exit;
             }
 
-            $newID = createNewUser($data['name']);
+
+            if (!isset($data['password']) || empty($data['password'])) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Password is required']);
+            exit;
+            }
+
+            $newID = createNewUser($data['name'], $data['password']);
 
             echo json_encode([
             'success' => true,

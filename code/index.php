@@ -87,6 +87,7 @@
     <div class="test-section">
         <h3>6. Post new user</h3>
         <input type="text" id="newUser-id" placeholder="New Username" value="300000">
+        <input type="text" id="newUserPass-id" placeholder="New Password" value="pass">
         <button onclick="createNewUser()">POST /user/</button>
         <pre id="newUser-result"></pre>
     </div>

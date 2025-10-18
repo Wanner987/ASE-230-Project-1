@@ -154,16 +154,17 @@ function getSongByID(int $id): array {
   }
 }
 
-function createNewUser(string $name): int {
+function createNewUser(string $name, string $password): int {
   global $pdo;
 
   try {
-    $sql = "INSERT INTO users (username, user_id) VALUES (:name, :id)";
+    $sql = "INSERT INTO users (username, user_id, password) VALUES (:name, :id, :password)";
     $stmt = $pdo->prepare($sql);
     $randomVal = random_int(0, 4294967295);
     $stmt->execute([
       ':name' => $name,
-      ':id' => $randomVal
+      ':id' => $randomVal,
+      ':password' => $password
     ]);
 
     return $randomVal;
