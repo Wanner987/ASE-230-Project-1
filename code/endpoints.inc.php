@@ -1,6 +1,5 @@
 <?php
 require_once 'sqlconnection.inc.php';
-
 /*
  * Simple Song and Playlist REST API
  * 
@@ -46,11 +45,12 @@ if ($resource === 'artist') {
     switch($method) {
         case 'GET':
             if ($artist_id) {
-                $test_connect = getArtistByID($artist_id)[0];
+                $artistName = getArtistByID($artist_id)[0];
                 echo json_encode([
                     'success' => true,
-                    'name' => $test_connect
+                    'name' => $artistName
                 ]);
+                exit;
             } else {
                 http_response_code(400);
                 echo json_encode(['error' => 'Artist ID required']);
@@ -67,10 +67,97 @@ if ($resource === 'artist') {
             http_response_code(405);
             echo json_encode(['error' => 'Method not allowed']);
     } 
-} else {
-    http_response_code(404);
-    echo json_encode(['error' => 'Resource not found']);
-}
+} 
+
+if ($resource === 'song') {
+    $song_id = isset($id) ? (int)$id : null;
+
+    switch($method) {
+        case 'GET':
+            if ($song_id) {
+                $songName = getSongByID($song_id)[0];
+                echo json_encode([
+                    'success' => true,
+                    'name' => $songName
+                ]);
+                exit;
+            } else {
+                http_response_code(400);
+                echo json_encode(['error' => 'Song ID required']);
+            }
+            break;
+        case 'POST':
+            break;
+        case 'PUT':
+            break;
+        case 'DELETE':
+            break;
+        
+        default:
+            http_response_code(405);
+            echo json_encode(['error' => 'Method not allowed']);
+    } 
+} 
+
+if ($resource === 'playlist') {
+    $playlist_id = isset($id) ? (int)$id : null;
+
+    switch($method) {
+        case 'GET':
+            if ($playlist_id) {
+                $songName = getPlaylistByID($playlist_id)[0];
+                echo json_encode([
+                    'success' => true,
+                    'name' => $songName
+                ]);
+                exit;
+            } else {
+                http_response_code(400);
+                echo json_encode(['error' => 'Song ID required']);
+            }
+            break;
+        case 'POST':
+            break;
+        case 'PUT':
+            break;
+        case 'DELETE':
+            break;
+        
+        default:
+            http_response_code(405);
+            echo json_encode(['error' => 'Method not allowed']);
+    } 
+} 
+
+if ($resource === 'user') {
+    $user_id = isset($id) ? (int)$id : null;
+
+    switch($method) {
+        case 'GET':
+            if ($user_id) {
+                $username = getSongByID($user_id)[0];
+                echo json_encode([
+                    'success' => true,
+                    'name' => $username
+                ]);
+                exit;
+            } else {
+                http_response_code(400);
+                echo json_encode(['error' => 'Song ID required']);
+            }
+            break;
+        case 'POST':
+            break;
+        case 'PUT':
+            break;
+        case 'DELETE':
+            break;
+        
+        default:
+            http_response_code(405);
+            echo json_encode(['error' => 'Method not allowed']);
+    } 
+} 
 
 exit;
 ?>

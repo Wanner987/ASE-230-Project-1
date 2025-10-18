@@ -57,6 +57,24 @@
     </div>
 
     <div id="artistResult"></div>
+
+    <div class="test-section">
+        <h3>2. Get Song by ID</h3>
+        <input type="number" id="song-id" placeholder="Song ID" value="30">
+        <button onclick="getSongByID()">GET /song/{id}</button>
+        <pre id="Song-id-result"></pre>
+    </div>
+
+    <div id="songIDResult"></div>
+
+    <div class="test-section">
+        <h3>3. Get User by ID</h3>
+        <input type="number" id="user-id" placeholder="User ID" value="300">
+        <button onclick="getUserByID()">GET /user/{id}</button>
+        <pre id="user-id-result"></pre>
+    </div>
+
+    <div id="artistResult"></div>
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="myJS.js"></script>

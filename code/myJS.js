@@ -10,3 +10,25 @@ async function getArtistByID() {
         document.getElementById('artist-id-result').textContent = 'Error: ' + error.message;
     }
 }
+
+async function getSongByID() {
+    const id = document.getElementById('song-id').value;
+    try {
+        const response = await fetch(`${API_BASE}/song/${id}`);
+        const data = await response.json();
+        document.getElementById('Song-id-result').textContent = JSON.stringify(data, null, 2);
+    } catch (error) {
+        document.getElementById('Song-id-result').textContent = 'Error: ' + error.message;
+    }
+}
+
+async function getUserByID() {
+    const id = document.getElementById('user-id').value;
+    try {
+        const response = await fetch(`${API_BASE}/user/${id}`);
+        const data = await response.json();
+        document.getElementById('user-id-result').textContent = JSON.stringify(data, null, 2);
+    } catch (error) {
+        document.getElementById('user-id-result').textContent = 'Error: ' + error.message;
+    }
+}

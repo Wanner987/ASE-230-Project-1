@@ -46,9 +46,9 @@ Total points earned in this section:
 | ≥ 2 Bearer Token APIs (10 pts each) | 20      | [ /20]  |
 | cURL test code (all APIs)           | 20      | [ /20]  |
 | HTML/JS test code (all APIs)        | 20      | [ /20]  |
-| DB integration (CRUD)               | 10      | [ /10]  |
-| GitHub repository link              | 20      | [ /20]  |
-| Copy in `code/` directory           | T/F     | [ T/F ] |
+| DB integration (CRUD)               | 10      | [ 10/10]  |
+| GitHub repository link              | 20      | [ 20/20]  |
+| Copy in `code/` directory           | T/F     | [ T ] |
 | **Total**                           | **130** | [ /130] |
 
 ---
