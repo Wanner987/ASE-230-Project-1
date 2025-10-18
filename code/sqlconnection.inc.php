@@ -18,45 +18,6 @@ try {
 
 
 
-
-
-
-
-#functions --------------------------------------------
-/*
-function getByID(int $id, string $table, string $idName): array {
-  $allowedTables = ['artist', 'song', 'user', 'playlist'];
-  global $pdo;
-
-  // Check if the provided table is in the allowlist
-  if (!in_array($table, $allowedTables)) {
-    throw new InvalidArgumentException("Invalid table name: $table");
-  }
-  
-  try {
-    $sql = "SELECT * FROM $table WHERE :idName = :id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([
-      ':id' => $id,
-      ':idName' => $idName
-    ]);
-
-    #check if successful
-    $row = $stmt->fetch();
-
-    if ($row) {
-      return $row;
-    } 
-    else {
-      return ['error no row found'];
-    }
-  } catch (PDOException $e) {
-    error_log("DB Error: " . $e->getMessage());
-    return ['error PDO exeption'];
-  }
-}
-*/
-
 function getArtistByID(int $id): array {
   global $pdo;
   try {
@@ -197,6 +158,38 @@ function getByName(string $searchName): array {
     error_log("DB Error: " . $e->getMessage());
     return ['error PDO exception'];
   }
+}
+
+function checkCredentials(string $username,string $password): bool {
+  return true;
+  if (!username || !password) {
+    return false;
+  }
+  
+
+  try {
+    $sql = "SELECT * FROM users WHERE username = :username AND password = :pass";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+      ':username' => $username,
+      ':pass' => $password
+    ]);
+
+    #check if successful
+    $rows = $stmt->fetch();
+
+    if ($rows) {
+      return $rows;
+    } 
+    else {
+      return false;
+    }
+  } catch (PDOException $e) {
+    error_log("DB Error: " . $e->getMessage());
+    return false;
+    //return ['error PDO exception'];
+  }
+
 }
 
 /*

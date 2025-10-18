@@ -40,6 +40,10 @@ $id = $segments[5] ?? null;
 $method = $_SERVER['REQUEST_METHOD']; //GET POST PUT DELETE
 
 if ($resource === 'artist') {
+    echo json_encode([
+                    'success' => true,
+                ]);
+                exit;
     $artist_id = isset($id) ? (int)$id : null;
 
     switch($method) {
@@ -213,5 +217,41 @@ if ($resource === 'search') {
     } 
 } 
 
+if ($resource === 'login') {
+    if ($method === 'POST') {
+        $input = json_decode(file_get_contents('php://input'), true);
+
+        if (!isset($input['username']) || !isset($input['password'])) {
+            sendJsonError(400, 'Username and password required');
+        }
+
+        $username = $input['username'];
+        $password = $input['password'];
+        
+        if (!checkCredentials($username, $password)) {
+            sendJsonError(401, 'Invalid username or password');
+        }
+        echo json_encode([
+            'success' => true,
+            'message' => "$username $password"
+        ]);
+        exit;
+
+        $token = bin2hex(random_bytes(32));
+
+
+        echo json_encode([
+            'success' => true,
+            'token' => $token,
+            'name' => $username
+        ]);
+        exit;
+        } else {
+            echo json_encode([
+                'success' => true,
+                'message' => 'Login endpoint'
+        ]);
+    }
+}
 exit;
 ?>

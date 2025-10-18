@@ -39,7 +39,7 @@ Total Points: 200
 
 ---
 
-- [ /10] Database integration working (CRUD) - Full points if MySQL works fine, no partial points
+- [ 10/10] Database integration working (CRUD) - Full points if MySQL works fine, no partial points
   - List your MySQL table names:
 - [ 20/20] Code pushed to **GitHub repository** - Full points if pushed to GitHub and provide a link, no partial points 
   - Write your GitHub repository link: https://github.com/Wanner987/ASE-230-Project-1

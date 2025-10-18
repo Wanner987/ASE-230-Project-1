@@ -1,4 +1,5 @@
 const API_BASE = 'http://localhost:121/project1/ASE-230-Project-1/code/endpoints.inc.php';
+let currentToken = null;
 
 async function getArtistByID() {
     const id = document.getElementById('artist-id').value;
@@ -73,5 +74,36 @@ async function createNewUser() {
         document.getElementById('newUser-result').textContent = JSON.stringify(data, null, 2);
     } catch (error) {
         document.getElementById('newUser-result').textContent = 'Error: ' + error.message;
+    }
+}
+
+async function loginUser() {
+    const userData = {
+        username: document.getElementById('username-login').value,
+        
+    };
+
+    try {
+        const response = await fetch(`${API_BASE}/login`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+            body: JSON.stringify(userData)
+        });
+
+        const data = await response.json();
+
+        if(response.ok) {
+            currentToken = data.token;
+
+            document.getElementById('login-result').textContent = JSON.stringify(data, null, 2);
+            document.getElementById('token-value').textContent = currentToken;
+        } else {
+            showError(responseDiv, data.error || 'Login failed');
+        }
+
+    } catch (error) {
+        document.getElementById('login-result').textContent = 'Error: ' + error.message;
     }
 }

@@ -91,6 +91,15 @@
         <button onclick="createNewUser()">POST /user/</button>
         <pre id="newUser-result"></pre>
     </div>
+
+    <div class="test-section">
+        <h3>7. Login</h3>
+        <input type="text" id="username-login" placeholder="username" value="name">
+        <input type="text" id="passwork-login" placeholder="password" value="pass">
+        <button onclick="loginUser()">POST /login/</button>
+        <pre id="login-result"></pre>
+        <pre id="token-value"></pre>
+    </div>
     
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
