@@ -135,7 +135,7 @@ if ($resource === 'user') {
     switch($method) {
         case 'GET':
             if ($user_id) {
-                $username = getSongByID($user_id)[0];
+                $username = getUserByID($user_id)[0];
                 echo json_encode([
                     'success' => true,
                     'name' => $username

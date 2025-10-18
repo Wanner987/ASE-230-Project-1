@@ -17,7 +17,7 @@ Total Points: 200
 
 ## 🔹 REST API Implementation (130 pts)
 
-- [ /40] Implemented at least 8 REST APIs in PHP/MySQL (5 points per 1 REST API).
+- [ 40/40] Implemented at least 8 REST APIs in PHP/MySQL (5 points per 1 REST API).
   - List their names:
   - - List APIs chosen:  
     - Get /artist/id
@@ -34,7 +34,7 @@ Total Points: 200
     - Put /playlist
 - [ /20] Made cURL test code (should test all APIs, 2 points per 1 API).
   - List the file name:
-- [ /20] Made HTML/JavaScript test code (should test all APIs, 2 points per 1 API).
+- [ 12/20] Made HTML/JavaScript test code (should test all APIs, 2 points per 1 API).
   - List the file name: index.php and myJS.js
 
 ---
@@ -53,10 +53,10 @@ Total points earned in this section:
 
 | Task                                | Points  | Earned  |
 |-------------------------------------|---------|---------|
-| ≥ 8 REST APIs (5 pts each)          | 40      | [ /40]  |
+| ≥ 8 REST APIs (5 pts each)          | 40      | [ 40/40]  |
 | ≥ 2 Bearer Token APIs (10 pts each) | 20      | [ /20]  |
 | cURL test code (all APIs)           | 20      | [ /20]  |
-| HTML/JS test code (all APIs)        | 20      | [ /20]  |
+| HTML/JS test code (all APIs)        | 20      | [ 12/20]  |
 | DB integration (CRUD)               | 10      | [ 10/10]  |
 | GitHub repository link              | 20      | [ 20/20]  |
 | Copy in `code/` directory           | T/F     | [ T ] |

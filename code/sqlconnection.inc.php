@@ -114,6 +114,7 @@ function getUserByID(int $id): array {
       ':id' => $id,
     ]);
 
+
     #check if successful
     $row = $stmt->fetch();
 
@@ -125,7 +126,7 @@ function getUserByID(int $id): array {
     }
   } catch (PDOException $e) {
     error_log("DB Error: " . $e->getMessage());
-    return ['error PDO exeption'];
+    return [$e->getMessage()];
   }
 }
 
