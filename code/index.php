@@ -76,8 +76,22 @@
         <button onclick="getPlaylistByID()">GET /playlist/{id}</button>
         <pre id="playlist-id-result"></pre>
     </div>
+
+    <div class="test-section">
+        <h3>5. Get Song by name</h3>
+        <input type="text" id="search-id" placeholder="Search" value="Through the fire and flames">
+        <button onclick="getByName()">GET /search/{name}</button>
+        <pre id="search-result"></pre>
+    </div>
+
+    <div class="test-section">
+        <h3>6. Post new user</h3>
+        <input type="text" id="newUser-id" placeholder="New Username" value="300000">
+        <button onclick="createNewUser()">POST /user/</button>
+        <pre id="newUser-result"></pre>
+    </div>
     
-    
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="myJS.js"></script>
 </body>

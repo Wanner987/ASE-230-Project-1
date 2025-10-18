@@ -105,7 +105,7 @@ if ($resource === 'playlist') {
     switch($method) {
         case 'GET':
             if ($playlist_id) {
-                $playlistArray = getPlaylistByID($playlist_id)[0];
+                $playlistArray = getPlaylistByID($playlist_id);
                 echo json_encode([
                     'success' => true,
                     'name' => $playlistArray
@@ -144,6 +144,53 @@ if ($resource === 'user') {
             } else {
                 http_response_code(400);
                 echo json_encode(['error' => 'Song ID required']);
+            }
+            break;
+        case 'POST':
+            $json = file_get_contents('php://input');
+            $data = json_decode($json, true);
+
+             if (!isset($data['name']) || empty($data['name'])) {
+            http_response_code(400);
+            echo json_encode(['error' => 'Name is required']);
+            exit;
+            }
+
+            $newID = createNewUser($data['name']);
+
+            echo json_encode([
+            'success' => true,
+            'new ID' => $newID
+            ]);
+            exit;
+
+            break;
+        case 'PUT':
+            break;
+        case 'DELETE':
+            break;
+        
+        default:
+            http_response_code(405);
+            echo json_encode(['error' => 'Method not allowed']);
+    } 
+} 
+
+if ($resource === 'search') {
+    $search_id = isset($id) ? (string)$id : null;
+
+    switch($method) {
+        case 'GET':
+            if ($search_id) {
+                $matches = getByName($search_id);
+                echo json_encode([
+                    'success' => true,
+                    'name' => $matches
+                ]);
+                exit;
+            } else {
+                http_response_code(400);
+                echo json_encode(['error' => 'Song Name required']);
             }
             break;
         case 'POST':

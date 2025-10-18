@@ -43,3 +43,34 @@ async function getPlaylistByID() {
         document.getElementById('playlist-id-result').textContent = 'Error: ' + error.message;
     }
 }
+
+async function getByName() {
+    const id = document.getElementById('search-id').value;
+    try {
+        const response = await fetch(`${API_BASE}/search/${id}`);
+        const data = await response.json();
+        document.getElementById('search-result').textContent = JSON.stringify(data, null, 2);
+    } catch (error) {
+        document.getElementById('search-result').textContent = 'Error: ' + error.message;
+    }
+}
+
+async function createNewUser() {
+    const newUserData = {
+        name: document.getElementById('newUser-id').value,
+    };
+
+    try {
+        const response = await fetch(`${API_BASE}/user`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+            body: JSON.stringify(newUserData)
+        });
+        const data = await response.json();
+        document.getElementById('newUser-result').textContent = JSON.stringify(data, null, 2);
+    } catch (error) {
+        document.getElementById('newUser-result').textContent = 'Error: ' + error.message;
+    }
+}

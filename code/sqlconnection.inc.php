@@ -161,46 +161,39 @@ function createNewUser(string $name): int {
     $stmt = $pdo->prepare($sql);
     $randomVal = random_int(0, 4294967295);
     $stmt->execute([
-      ':name' => $randomVal,
-      ':id' => $id
+      ':name' => $name,
+      ':id' => $randomVal
     ]);
 
     return $randomVal;
 
   } catch (PDOException $e) {
     error_log("DB Error: " . $e->getMessage());
-    return -1;
+    return null;
   }
 }
 
-function getByName(string $searchName, string $table): array {
-  $allowedTables = ['artist', 'song'];
+function getByName(string $searchName): array {
   global $pdo;
-
-  // Check if the provided table is in the allowlist
-  if (!in_array($table, $allowedTables)) {
-    throw new InvalidArgumentException("Invalid table name: $table");
-  }
-  
   try {
-    $sql = "SELECT * FROM $table WHERE name = :search";
+    $sql = "SELECT * FROM songs WHERE name = :search";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
       ':search' => $searchName
     ]);
 
     #check if successful
-    $row = $stmt->fetch();
+    $rows = $stmt->fetchAll();
 
-    if ($row) {
-      return $row;
+    if ($rows) {
+      return $rows;
     } 
     else {
-      return ['error'];
+      return ['error no row found'];
     }
   } catch (PDOException $e) {
     error_log("DB Error: " . $e->getMessage());
-    return ['error'];
+    return ['error PDO exception'];
   }
 }
 
