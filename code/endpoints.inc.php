@@ -142,35 +142,23 @@ if ($resource === 'playlist') {
             }
             break;
         case 'POST':
-            echo json_encode([
-            'success' => true,
-            ]);
-            exit;
             $json = file_get_contents('php://input');
             $data = json_decode($json, true);
 
-            if (!isset($data['songName']) || empty($data['songName'])) {
+            if (!isset($data['userID']) || empty($data['userID'])) {
                 http_response_code(400);
-                echo json_encode(['error' => 'Name is required']);
+                echo json_encode(['error' => 'User ID is required']);
                 exit;
             }
 
-            if (!isset($data['songArtist']) || empty($data['songArtist'])) {
-                http_response_code(400);
-                echo json_encode(['error' => 'Artist is required']);
-                exit;
-            }
-
-            if (!isset($data['songAuth']) || empty($data['songAuth'])) {
+            if (!isset($data['playlistAuth']) || empty($data['playlistAuth'])) {
                 http_response_code(400);
                 echo json_encode(['error' => 'Auth is required']);
                 exit;
             }
 
-            $songName = $data['songName'];
-            $songArtist = $data['songArtist'];
-            $songLength = $data['songLength'];
-            $auth = $data['songAuth'];
+            $userID = $data['userID'];
+            $auth = $data['playlistAuth'];
 
             if(!isValidToken($auth)) {
                 http_response_code(400);
@@ -178,16 +166,69 @@ if ($resource === 'playlist') {
                 exit;
             }
 
-            $newSongID = createNewSong($songName, $songArtist, $songLength);
+            $newPlaylistID = createNewPlaylist($userID);
 
             echo json_encode([
             'success' => true,
-            'new ID' => $newSongID
+            'new ID' => $newPlaylistID
             ]);
             exit;
 
             break;
         case 'PUT':
+            $json = file_get_contents('php://input');
+            $data = json_decode($json, true);
+
+            if (!isset($data['playlistID']) || empty($data['playlistID'])) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Playlist ID is required']);
+                exit;
+            }
+
+            if (!isset($data['songID']) || empty($data['songID'])) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Song ID is required']);
+                exit;
+            }
+
+            if (!isset($data['playlistAuth']) || empty($data['playlistAuth'])) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Auth is required']);
+                exit;
+            }
+
+            
+            $playlistID = $data['playlistID'];
+            $songID = $data['songID'];
+            $auth = $data['playlistAuth'];
+
+            if (getPlaylistByID($playlistID)[0] == 'error no row found') {
+                http_response_code(400);
+                echo json_encode(['error' => 'playlist ID is incorrect']);
+                exit;
+            }
+
+            if (getSongByID($songID)[0] == 'error no row found') {
+                http_response_code(400);
+                echo json_encode(['error' => 'song ID is incorrect']);
+                exit;
+            }
+
+            if(!isValidToken($auth)) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Auth is wrong']);
+                exit;
+            }
+
+            $message = addSongToPlaylist($playlistID, $songID);
+
+            echo json_encode([
+            'success' => true,
+            'message' => $message
+            ]);
+            exit;
+
+            
             break;
         case 'DELETE':
             break;

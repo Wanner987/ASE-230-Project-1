@@ -124,10 +124,11 @@
     <div class="test-section">
         <h3>10. add song to playlist</h3>
 
-        <input type="text" id="modifyPlaylist-user" placeholder="playlist id" value="">
+        <input type="number" id="modifyPlaylist-playlistID" placeholder="playlist id" value="">
+        <input type="number" id="modifyPlaylist-songID" placeholder="song id" value="">
         <input type="text" id="modifyPlaylist-auth" placeholder="the token you got from loging in" value="">
 
-        <button onclick="AddSongToPlaylist()">PUT /playlist/</button>
+        <button onclick="addSongToPlaylist()">PUT /playlist/</button>
         <pre id="modifyPlaylist-result"></pre>
     </div>
     

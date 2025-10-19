@@ -44,7 +44,7 @@ function getArtistByID(int $id): array {
 function getPlaylistByID(int $id): array {
   global $pdo;
   try {
-    $sql = "SELECT * FROM playlist_songs WHERE playlist_id = :id";
+    $sql = "SELECT * FROM playlist WHERE playlist_id = :id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
       ':id' => $id,
@@ -235,6 +235,44 @@ function createNewSong(string $name, string $artistName, int $songLength): int {
   }
 }
 
+function createNewPlaylist(string $userID): int {
+  global $pdo;
+
+  try {
+    $sql = "INSERT INTO playlist (Playlist_ID, User_ID) VALUES (:playlistID, :userID)";
+    $stmt = $pdo->prepare($sql);
+    $randomVal = random_int(0, 4294967295);
+    $stmt->execute([
+      ':playlistID' => $randomVal,
+      ':userID' => $userID
+    ]);
+
+    return $randomVal;
+
+  } catch (PDOException $e) {
+    error_log("DB Error: " . $e->getMessage());
+    return -1;
+  }
+}
+
+function addSongToPlaylist(int $playlistID, int $songID): string {
+  global $pdo;
+
+  try {
+    $sql = "INSERT INTO playlist_songs (Playlist_ID, Song_ID) VALUES (:playlistID, :songID)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+      ':playlistID' => $playlistID,
+      ':songID' => $songID
+    ]);
+
+    return "Added song by the ID $songID to the playlist with the ID $playlistID";
+
+  } catch (PDOException $e) {
+    error_log("DB Error: " . $e->getMessage());
+    return 'Failed to add song';
+  }
+}
 /*
  * Simple Song and Playlist REST API
  * 
