@@ -7,6 +7,14 @@ style: |
     font-size: 24px;
   }
 ---
+# How to test
+
+- start a local server in some way (in my case I used xampp)
+- start a mySQL server in some way (used xampp)
+- you need to dirct to http://localhost:port/project1/ASE-230-Project-1/code/
+- then the index should load and you can mess with it
+
+---
 
 <!-- API name Explanation Slide -->
 # Get Artist by ID explanation

@@ -73,7 +73,7 @@ Total points earned in this section:
 - [ 10/10] Slides (and PDFs) uploaded to **GitHub** - no partial points
   - Convert the marp to PDF:
   - Write your GitHub repository marp link: https://github.com/Wanner987/ASE-230-Project-1/tree/main/presentation
-  - Write your GitHub repository PDF link: 
+  - Write your GitHub repository PDF link: https://github.com/Wanner987/ASE-230-Project-1/blob/main/presentation/presentation.pdf
 - [T] Saved in `presentation/` directory  
   - Earn 0 points in this section when you do not copy your slides.
 
@@ -81,12 +81,12 @@ Total points earned in this section:
 
 | Task                               | Points | Earned  |
 |------------------------------------|--------|---------|
-| Marp slides (>20 pages)            | 30     | [ /30]  |
-| Clear explanation of endpoints     | T/F    | [ T/F ] |
-| Examples of requests/responses     | 10     | [ /10]  |
-| Slides uploaded to GitHub          | 10     | [ /10]  |
+| Marp slides (>20 pages)            | 30     | [ 30/30]  |
+| Clear explanation of endpoints     | T/F    | [ T ] |
+| Examples of requests/responses     | 10     | [ 10/10]  |
+| Slides uploaded to GitHub          | 10     | [ 10/10]  |
 | Saved in `presentation/` directory | T/F    | [ T ] |
-| **Total**                          | **50** | [ /50]  |
+| **Total**                          | **50** | [ 50/50]  |
 
 ---
 
@@ -115,17 +115,17 @@ Total points earned in this section:
 
 ## 🏁 Final Checks
 
-- [ ] I understand that I may deduct points if the results are of poor quality.
-- [ ] I understand that I may be reported as plagiarism if I used other (including the professor's slides) work, but did not reference it.
-- [ ] Copy files in correct directory: `code/`, `presentation/`, `plan/`  
-- [ ] Pushed to GitHub + submitted zip copy  
+- [X] I understand that I may deduct points if the results are of poor quality.
+- [X] I understand that I may be reported as plagiarism if I used other (including the professor's slides) work, but did not reference it.
+- [X] Copy files in correct directory: `code/`, `presentation/`, `plan/`  
+- [X] Pushed to GitHub + submitted zip copy  
 - [ ] Project ready for **portfolio showcase**  
 
 ---
 
 | Task                       | Points  | Earned  |
 |----------------------------|---------|---------|
-| 🔹 REST API Implementation | 130     | [ /130] |
-| 🔹 Tutorial Slides         | 50      | [ /50]  |
+| 🔹 REST API Implementation | 130     | [ 110/130] |
+| 🔹 Tutorial Slides         | 50      | [ 50/50]  |
 | 🔹 NGINX Deployment        | 20      | [ /20]  |
-| **Total**                  | **150** | [ /150] |
+| **Total**                  | **150** | [ 160/200] |
