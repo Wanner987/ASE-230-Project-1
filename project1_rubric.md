@@ -66,13 +66,13 @@ Total points earned in this section:
 
 ## 🔹 Tutorial Slides (50 pts)
 
-- [ /30] Created **Marp slides** explaining API usage (more than 20 pages (and converted into PDFs) - explanation/example for each API, 15 points if not, 0 points if none)
+- [ 30/30] Created **Marp slides** explaining API usage (more than 20 pages (and converted into PDFs) - explanation/example for each API, 15 points if not, 0 points if none)
   - List Marp file name:
   - [T/F] Clear explanation of each endpoint: May lose points if not clearly explained
-- [ /10] Includes examples of requests/responses - no partial points
-- [ /10] Slides (and PDFs) uploaded to **GitHub** - no partial points
+- [ 10/10] Includes examples of requests/responses - no partial points
+- [ 10/10] Slides (and PDFs) uploaded to **GitHub** - no partial points
   - Convert the marp to PDF:
-  - Write your GitHub repository marp link: https://github.com/Wanner987/ASE-230-Project-1
+  - Write your GitHub repository marp link: https://github.com/Wanner987/ASE-230-Project-1/tree/main/presentation
   - Write your GitHub repository PDF link: 
 - [T] Saved in `presentation/` directory  
   - Earn 0 points in this section when you do not copy your slides.
