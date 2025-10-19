@@ -114,7 +114,7 @@
     <div class="test-section">
         <h3>9. Create new playlist</h3>
 
-        <input type="text" id="newPlaylist-user" placeholder="user id" value="">
+        <input type="number" id="newPlaylist-user" placeholder="user id" value="">
         <input type="text" id="newPlaylist-auth" placeholder="the token you got from loging in" value="">
 
         <button onclick="createNewPlaylist()">POST /playlist/</button>

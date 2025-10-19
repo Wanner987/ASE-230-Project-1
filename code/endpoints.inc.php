@@ -160,6 +160,12 @@ if ($resource === 'playlist') {
             $userID = $data['userID'];
             $auth = $data['playlistAuth'];
 
+            if (getUserByID($userID)[0] == 'error no row found') {
+                http_response_code(400);
+                echo json_encode(['error' => 'user ID is incorrect']);
+                exit;
+            }
+            
             if(!isValidToken($auth)) {
                 http_response_code(400);
                 echo json_encode(['error' => 'Auth is wrong']);
