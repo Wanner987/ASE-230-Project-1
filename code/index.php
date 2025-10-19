@@ -113,16 +113,22 @@
 
     <div class="test-section">
         <h3>9. Create new playlist</h3>
-        
-        <button onclick="createNewSong()">POST /song/</button>
+
+        <input type="text" id="newPlaylist-user" placeholder="user id" value="">
+        <input type="text" id="newPlaylist-auth" placeholder="the token you got from loging in" value="">
+
+        <button onclick="createNewPlaylist()">POST /playlist/</button>
         <pre id="newPlaylist-result"></pre>
     </div>
 
     <div class="test-section">
         <h3>10. add song to playlist</h3>
-        <
-        <button onclick="createNewSong()">POST /song/</button>
-        <pre id="mosifyPlaylist-result"></pre>
+
+        <input type="text" id="modifyPlaylist-user" placeholder="playlist id" value="">
+        <input type="text" id="modifyPlaylist-auth" placeholder="the token you got from loging in" value="">
+
+        <button onclick="AddSongToPlaylist()">PUT /playlist/</button>
+        <pre id="modifyPlaylist-result"></pre>
     </div>
     
 

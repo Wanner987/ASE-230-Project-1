@@ -142,6 +142,50 @@ if ($resource === 'playlist') {
             }
             break;
         case 'POST':
+            echo json_encode([
+            'success' => true,
+            ]);
+            exit;
+            $json = file_get_contents('php://input');
+            $data = json_decode($json, true);
+
+            if (!isset($data['songName']) || empty($data['songName'])) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Name is required']);
+                exit;
+            }
+
+            if (!isset($data['songArtist']) || empty($data['songArtist'])) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Artist is required']);
+                exit;
+            }
+
+            if (!isset($data['songAuth']) || empty($data['songAuth'])) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Auth is required']);
+                exit;
+            }
+
+            $songName = $data['songName'];
+            $songArtist = $data['songArtist'];
+            $songLength = $data['songLength'];
+            $auth = $data['songAuth'];
+
+            if(!isValidToken($auth)) {
+                http_response_code(400);
+                echo json_encode(['error' => 'Auth is wrong']);
+                exit;
+            }
+
+            $newSongID = createNewSong($songName, $songArtist, $songLength);
+
+            echo json_encode([
+            'success' => true,
+            'new ID' => $newSongID
+            ]);
+            exit;
+
             break;
         case 'PUT':
             break;

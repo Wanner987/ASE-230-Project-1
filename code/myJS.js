@@ -132,4 +132,24 @@ async function createNewSong() {
     }
 }
     
-    
+async function createNewPlaylist() {
+    const userData = {
+        userID: document.getElementById('newPlaylist-user').value,
+        playlistAuth: document.getElementById('newPlaylist-auth').value
+    };
+
+    try {
+        const response = await fetch(`${API_BASE}/playlist`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+            body: JSON.stringify(userData)
+        });
+
+        const data = await response.json();
+        document.getElementById('newPlaylist-result').textContent = JSON.stringify(data, null, 2);
+    } catch (error) {
+        document.getElementById('newPlaylist-result').textContent = 'Error: ' + error.message;
+    }
+}
