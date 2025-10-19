@@ -169,7 +169,7 @@ function getArtistByName(string $searchName): array {
     ]);
 
     #check if successful
-    $rows = $stmt->fetchAll();
+    $rows = $stmt->fetch();
 
     if ($rows) {
       return $rows;
@@ -214,7 +214,7 @@ function checkCredentials(string $username,string $password): bool {
 
 function createNewSong(string $name, string $artistName, int $songLength): int {
   global $pdo;
-  $artistID = getArtistByName($artistName);
+  $artistID = getArtistByName($artistName)['Artist_ID'];
 
   try {
     $sql = "INSERT INTO songs (song_id, artist_ID, name, length_in_sec) VALUES (:songID, :artistID, :name, :songLength)";

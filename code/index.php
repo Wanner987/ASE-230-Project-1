@@ -103,9 +103,9 @@
 
     <div class="test-section">
         <h3>8. Create new song</h3>
-        <input type="text" id="newSong-name" placeholder="name" value="">
-        <input type="text" id="newSong-artist" placeholder="bob" value="">
-        <input type="number" id="newSong-length" placeholder="100" value="">
+        <input type="text" id="newSong-name" placeholder="name of song" value="">
+        <input type="text" id="newSong-artist" placeholder="artist" value="">
+        <input type="number" id="newSong-length" placeholder="length" value="">
         <input type="text" id="newSong-auth" placeholder="the token you got from loging in" value="">
         <button onclick="createNewSong()">POST /song/</button>
         <pre id="newSong-result"></pre>
@@ -115,14 +115,14 @@
         <h3>9. Create new playlist</h3>
         
         <button onclick="createNewSong()">POST /song/</button>
-        <pre id="newSong-result"></pre>
+        <pre id="newPlaylist-result"></pre>
     </div>
 
     <div class="test-section">
         <h3>10. add song to playlist</h3>
         <
         <button onclick="createNewSong()">POST /song/</button>
-        <pre id="newSong-result"></pre>
+        <pre id="mosifyPlaylist-result"></pre>
     </div>
     
 
