@@ -60,7 +60,7 @@ if ($resource === 'song') {
     switch($method) {
         case 'GET':
             if ($song_id) {
-                $songName = getSongByID($song_id)[0];
+                $songName = getSongByID($song_id)[2];
                 echo json_encode([
                     'success' => true,
                     'name' => $songName

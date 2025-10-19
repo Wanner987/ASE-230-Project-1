@@ -26,7 +26,7 @@ Total Points: 200
     - Get /song/id  
     - Post /user
     - Get /search
-- [ 5/20] Implemented at least 2 Bearer Token authentication REST APIs in PHP/MySQL (10 points per 1 Bearer Token REST API)
+- [ 20/20] Implemented at least 2 Bearer Token authentication REST APIs in PHP/MySQL (10 points per 1 Bearer Token REST API)
   - List their names:  
     - Post /auth/login
     - Post /playlist 
@@ -34,7 +34,7 @@ Total Points: 200
     - Put /playlist
 - [ /20] Made cURL test code (should test all APIs, 2 points per 1 API).
   - List the file name:
-- [ 12/20] Made HTML/JavaScript test code (should test all APIs, 2 points per 1 API).
+- [ 20/20] Made HTML/JavaScript test code (should test all APIs, 2 points per 1 API).
   - List the file name: index.php and myJS.js
 
 ---
@@ -54,13 +54,13 @@ Total points earned in this section:
 | Task                                | Points  | Earned  |
 |-------------------------------------|---------|---------|
 | ≥ 8 REST APIs (5 pts each)          | 40      | [ 40/40]  |
-| ≥ 2 Bearer Token APIs (10 pts each) | 20      | [ /20]  |
+| ≥ 2 Bearer Token APIs (10 pts each) | 20      | [ 20/20]  |
 | cURL test code (all APIs)           | 20      | [ /20]  |
-| HTML/JS test code (all APIs)        | 20      | [ 12/20]  |
+| HTML/JS test code (all APIs)        | 20      | [ 20/20]  |
 | DB integration (CRUD)               | 10      | [ 10/10]  |
 | GitHub repository link              | 20      | [ 20/20]  |
 | Copy in `code/` directory           | T/F     | [ T ] |
-| **Total**                           | **130** | [ /130] |
+| **Total**                           | **130** | [ 110/130] |
 
 ---
 
@@ -72,9 +72,9 @@ Total points earned in this section:
 - [ /10] Includes examples of requests/responses - no partial points
 - [ /10] Slides (and PDFs) uploaded to **GitHub** - no partial points
   - Convert the marp to PDF:
-  - Write your GitHub repository marp link:
-  - Write your GitHub repository PDF link:
-- [T/F] Saved in `presentation/` directory  
+  - Write your GitHub repository marp link: https://github.com/Wanner987/ASE-230-Project-1
+  - Write your GitHub repository PDF link: 
+- [T] Saved in `presentation/` directory  
   - Earn 0 points in this section when you do not copy your slides.
 
 ---
@@ -85,7 +85,7 @@ Total points earned in this section:
 | Clear explanation of endpoints     | T/F    | [ T/F ] |
 | Examples of requests/responses     | 10     | [ /10]  |
 | Slides uploaded to GitHub          | 10     | [ /10]  |
-| Saved in `presentation/` directory | T/F    | [ T/F ] |
+| Saved in `presentation/` directory | T/F    | [ T ] |
 | **Total**                          | **50** | [ /50]  |
 
 ---
