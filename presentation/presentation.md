@@ -11,6 +11,7 @@ style: |
 
 - start a local server in some way (in my case I used xampp)
 - start a mySQL server in some way (used xampp)
+- Use the testingSQL file to create and fill the tables
 - you need to dirct to http://localhost:port/project1/ASE-230-Project-1/code/
 - then the index should load and you can mess with it
 
